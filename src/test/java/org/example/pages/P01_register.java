@@ -2,16 +2,9 @@ package org.example.pages;
 
 import org.example.stepDefs.Hooks;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class P01_register {
-    WebDriver driver;
-
-    public P01_register() {
-        this.driver = driver;
-    }
-
     By registerButton = By.className("ico-register");
     By firstName = By.id("FirstName");
     By lastname = By.id("LastName");

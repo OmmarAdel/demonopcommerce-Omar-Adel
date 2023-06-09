@@ -22,7 +22,7 @@ public class D01_registerStepDef {
     public void userFillsMandatoryPersonalDetails(String firstname, String lastname, String email) {
         pages.userEnterFirstName().sendKeys("automation");
         pages.userEnterLastname().sendKeys("tester");
-        pages.userEnterEmail().sendKeys("test3@example.com");
+        pages.userEnterEmail().sendKeys("tests@example.com");
     }
 
     @And("user fills mandatory password and ConfirmPassword {string} {string}")
@@ -43,4 +43,6 @@ public class D01_registerStepDef {
         softAssert.assertTrue(pages.assertRegistration().getText().contains("Your registration completed"));
         softAssert.assertAll();
     }
+
+
 }
