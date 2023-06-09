@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.pages.P01_register;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.Color;
 import org.testng.asserts.SoftAssert;
 
 public class D01_registerStepDef {
@@ -22,7 +23,7 @@ public class D01_registerStepDef {
     public void userFillsMandatoryPersonalDetails(String firstname, String lastname, String email) {
         pages.userEnterFirstName().sendKeys("automation");
         pages.userEnterLastname().sendKeys("tester");
-        pages.userEnterEmail().sendKeys("tests@example.com");
+        pages.userEnterEmail().sendKeys("testers1@example.com");
     }
 
     @And("user fills mandatory password and ConfirmPassword {string} {string}")
@@ -41,6 +42,9 @@ public class D01_registerStepDef {
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertTrue(pages.assertRegistration().isDisplayed());
         softAssert.assertTrue(pages.assertRegistration().getText().contains("Your registration completed"));
+        String actualColor =  Hooks.driver.findElement(By.cssSelector("body > div.master-wrapper-page > div.master-wrapper-content > div > div > div > div.page-body > div.result")).getCssValue("color");
+        String actualColorHex = Color.fromString(actualColor).asHex();
+        softAssert.assertTrue(actualColorHex.equals("#4cb17c"));
         softAssert.assertAll();
     }
 

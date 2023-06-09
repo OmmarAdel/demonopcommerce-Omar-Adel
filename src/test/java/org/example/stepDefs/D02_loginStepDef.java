@@ -22,7 +22,7 @@ public class D02_loginStepDef {
     @When("user login with valid email and password")
     public void userLoginWithValidEmailAndPassword() {
 
-        login.userEnterEmail().sendKeys("tests@example.com");
+        login.userEnterEmail().sendKeys("testers1@example.com");
         login.userEnterPassWord().sendKeys("P@ssw0rd");
 
     }
