@@ -13,9 +13,7 @@ public class P02_login {
     By emailField = By.id("Email");
     By passwordField = By.id("Password");
     By loginButton = By.xpath("/html/body/div[6]/div[3]/div/div/div/div[2]/div[1]/div[2]/form/div[3]/button");
-    By assertLogin = By.className("ico-logout");
-
-    By assertLoginFailed = By.className("message-error");
+    By myAccountTab = By.className("ico-account");
 
 
     public WebElement userGoToLoginPage () {
@@ -34,10 +32,12 @@ public class P02_login {
         return Hooks.driver.findElement(loginButton);
     }
 
-    public WebElement assertLoginSuccessfully() {
-        return Hooks.driver.findElement(assertLogin);
+    public WebElement myAccountTabIsDisplayed(){
+        return Hooks.driver.findElement(myAccountTab);
     }
-    public WebElement assertLoginFailed(){
-        return Hooks.driver.findElement(assertLoginFailed);
+    public String displayMessageError (){
+        return Hooks.driver.findElement(By.className("message-error"))
+                .getCssValue("color");
     }
+
 }

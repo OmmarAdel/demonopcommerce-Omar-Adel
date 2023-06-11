@@ -9,6 +9,6 @@
 
     Scenario: user could login with invalid email and password
       Given user go to login page
-        When user login with invalid "wrong@example.com" and "P@ssw0rd"
+        When user login with invalid email And password "wrong@example.com" and "P@ssw0rd"
           And user press on login button
             Then user could not login to the system

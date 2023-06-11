@@ -5,7 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.pages.P02_login;
-import org.testng.Assert;
+import org.openqa.selenium.support.Color;
 import org.testng.asserts.SoftAssert;
 
 public class D02_loginStepDef {
@@ -34,28 +34,31 @@ public class D02_loginStepDef {
 
     @Then("user login to the system successfully")
     public void userLoginToTheSystemSuccessfully() {
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(login.myAccountTabIsDisplayed().isDisplayed());
+        softAssert.assertEquals(Hooks.driver.getCurrentUrl(),"https://demo.nopcommerce.com/");
+        softAssert.assertAll();
 
-        Assert.assertTrue(login.assertLoginSuccessfully().isDisplayed());
     }
 
 
-
+        @When("user login with invalid email And password {string} and {string}")
+        public void userLoginWithInvalidEmailAndPasswordAnd(String arg0, String arg1) {
+            login.userEnterEmail().sendKeys("tesst1@example.com");
+            login.userEnterPassWord().sendKeys("P@sssw0rd");
+        }
         @And("user press on login button")
         public void userPressOnLoginButton () {
             login.userClickOnLoginButton().click();
-        }
+    }
 
         @Then("user could not login to the system")
         public void userCouldNotLoginToTheSystem () {
             SoftAssert softAssert = new SoftAssert();
-            softAssert.assertTrue(login.assertLoginFailed().isDisplayed());
-
-        }
-
-        @When("user login with invalid {string} and {string}")
-        public void userLoginWithInvalidAnd (String arg0, String arg1){
-            login.userEnterEmail().sendKeys("tesst1@example.com");
-            login.userEnterPassWord().sendKeys("P@sssw0rd");
-        }
+            String errorMessage = login.displayMessageError();
+            String errorMessageHex = Color.fromString(errorMessage).asHex();
+            softAssert.assertTrue(errorMessageHex.equals("#e4434b"));
+            softAssert.assertAll();
 
     }
+}
