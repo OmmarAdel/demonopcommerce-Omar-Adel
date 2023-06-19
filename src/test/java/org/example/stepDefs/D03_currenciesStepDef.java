@@ -25,7 +25,7 @@ public class D03_currenciesStepDef {
     public void newCurrencyShouldBeAppear() {
 
         for (int i = 0; i < homePage.listOfItems().size(); i++ ){
-            Assert.assertTrue(homePage.item().getText().contains("€"),"wrong solution ");
+            Assert.assertTrue(homePage.item().getText().contains("€"),"error");
         }
         System.out.println(homePage.listOfItems().size());
 

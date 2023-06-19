@@ -11,6 +11,11 @@ public class P03_homePage {
     By clickOnSearchField = By.id("small-searchterms");
     By clickOnSearchButton = By.xpath("//*[@id=\"small-search-box-form\"]/button");
 
+    By hoverOnComputers = By.xpath("/html/body/div[6]/div[2]/ul[1]/li[1]/a");
+
+    By clickOnNotebooks = By.xpath("/html/body/div[6]/div[2]/ul[1]/li[1]/ul/li[2]/a");
+
+
 
 
 
@@ -38,6 +43,12 @@ public class P03_homePage {
     }
     public String currentURL(){
         return Hooks.driver.getCurrentUrl();
+    }
+    public WebElement hoverOn (){
+        return Hooks.driver.findElement(hoverOnComputers);
+    }
+    public WebElement clickOnSubCategory (){
+        return Hooks.driver.findElement(clickOnNotebooks);
     }
 
 
