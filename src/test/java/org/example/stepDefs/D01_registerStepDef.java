@@ -9,6 +9,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.Color;
 import org.testng.asserts.SoftAssert;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class D01_registerStepDef {
 
     P01_register pages = new P01_register();
@@ -21,9 +23,12 @@ public class D01_registerStepDef {
 
     @When("user fills mandatory Personal Details {string} {string} {string}")
     public void userFillsMandatoryPersonalDetails(String firstname, String lastname, String email) {
+        int aa = ThreadLocalRandom.current().nextInt(0, 200);
         pages.userEnterFirstName().sendKeys("automation");
         pages.userEnterLastname().sendKeys("tester");
-        pages.userEnterEmail().sendKeys("testers1@example.com");
+        String emailReg = aa+"testers1@example.com";
+        pages.userEnterEmail().sendKeys(emailReg);
+        System.out.printf(emailReg);
     }
 
     @And("user fills mandatory password and ConfirmPassword {string} {string}")
